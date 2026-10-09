@@ -554,23 +554,80 @@ export const InteractiveDemo: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Scientific Visual */}
-                <div className="relative rounded-lg overflow-hidden border border-slate-800 aspect-[16/9] bg-slate-950">
-                  <img
-                    src="/src/assets/images/medical_ai_research_xai_1791535903180.jpg"
-                    alt="Explainable Deep Learning Model for Medical Image Enhancement and Tumor Detection - ICODSES 2026"
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
+                {/* Scientific Vector Visual (Replaces screenshot with live reactive neural stage inspector) */}
+                <div className="relative rounded-lg overflow-hidden border border-slate-800 aspect-[16/9] bg-slate-950 flex items-center justify-center p-6">
+                  {/* Stage-dependent Vector Visualizer */}
+                  {xaiView === 'raw' && (
+                    <div className="w-full h-full flex flex-col items-center justify-center font-mono">
+                      <div className="w-36 h-36 rounded-full border-2 border-slate-700/60 flex items-center justify-center relative bg-slate-900/40">
+                        {/* Axial brain contour */}
+                        <div className="w-28 h-28 rounded-full border border-slate-600/40 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-full bg-slate-800/80 blur-xs absolute top-8 left-8" />
+                          <span className="text-[10px] text-slate-500">T1-w Matrix</span>
+                        </div>
+                      </div>
+                      <span className="text-[11px] text-slate-400 mt-2">Raw Axial Acquisition (Unfiltered 1.5T MRI)</span>
+                    </div>
+                  )}
+
+                  {xaiView === 'enhanced' && (
+                    <div className="w-full h-full flex flex-col items-center justify-center font-mono">
+                      <div className="w-36 h-36 rounded-full border-2 border-blue-500/80 flex items-center justify-center relative bg-blue-950/20 shadow-lg shadow-blue-500/10">
+                        <div className="w-28 h-28 rounded-full border border-blue-400/50 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-full bg-blue-300/30 blur-xs absolute top-8 left-8 border border-blue-300" />
+                          <span className="text-[10px] text-blue-300">SNR Boosted</span>
+                        </div>
+                      </div>
+                      <span className="text-[11px] text-blue-400 mt-2">Adaptive Contrast Filtered (+18.4dB Peak SNR)</span>
+                    </div>
+                  )}
+
+                  {xaiView === 'features' && (
+                    <div className="w-full h-full flex flex-col items-center justify-center font-mono">
+                      <div className="grid grid-cols-4 gap-2 w-full max-w-xs">
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((f) => (
+                          <div key={f} className="p-2 bg-indigo-950/40 border border-indigo-700/60 rounded text-center">
+                            <span className="text-[9px] text-indigo-400 block">K{f}</span>
+                            <div className="h-6 bg-indigo-600/20 rounded mt-1 flex items-center justify-center text-[9px] text-indigo-300">
+                              3×3
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <span className="text-[11px] text-indigo-300 mt-3">Layer 8 Convolutional Feature Filters</span>
+                    </div>
+                  )}
+
+                  {xaiView === 'gradcam' && (
+                    <div className="w-full h-full flex flex-col items-center justify-center font-mono relative">
+                      {/* Saliency Heatmap Simulation */}
+                      <div className="w-40 h-40 rounded-full border border-slate-700 relative flex items-center justify-center bg-slate-900/60">
+                        {/* Brain hemisphere lines */}
+                        <div className="w-full h-[1px] bg-slate-800 absolute" />
+                        <div className="h-full w-[1px] bg-slate-800 absolute" />
+                        
+                        {/* Grad-CAM Hotspot */}
+                        <div className="absolute top-6 left-6 w-14 h-14 rounded-full bg-rose-500/30 border border-rose-500 blur-xs animate-pulse flex items-center justify-center">
+                          <div className="w-7 h-7 rounded-full bg-amber-400/60" />
+                        </div>
+                        {/* Target Crosshair */}
+                        <div className="absolute top-8 left-8 text-[9px] text-rose-300 bg-slate-950/80 px-1 py-0.5 rounded border border-rose-600">
+                          Lesion Centroid 94.7%
+                        </div>
+                      </div>
+                      <span className="text-[11px] text-rose-400 mt-2">Grad-CAM Activation Focus (Clinical Ground Truth Match)</span>
+                    </div>
+                  )}
+
                   {/* Informative stage caption */}
-                  <div className="absolute bottom-2 left-2 right-2 bg-slate-950/90 backdrop-blur-sm border border-slate-800/80 rounded p-2.5 text-[11px] text-slate-300">
+                  <div className="absolute bottom-2 left-2 right-2 bg-slate-950/90 backdrop-blur-sm border border-slate-800/80 rounded p-2 text-[11px] text-slate-300 font-sans">
                     <span className="font-semibold text-white">
                       {xaiView === 'gradcam' ? 'XAI Heatmap Verification:' : xaiView === 'features' ? 'Mid-to-High Level Feature Activations:' : 'Pre-processing Pipeline:'}
                     </span>{' '}
                     {xaiView === 'gradcam'
-                      ? 'The gradient backpropagation selectively highlights the left hemisphere hyperintensity lesion without background false positives.'
+                      ? 'Gradient backpropagation selectively localizes the left-hemisphere pathological lesion without background false positives.'
                       : xaiView === 'features'
-                      ? 'Spatial convolution extracts micro-structural brain textures prior to dense classifier voting.'
+                      ? 'Spatial convolution extracts micro-structural textures prior to dense classifier voting.'
                       : 'Noise reduction and contrast enhancement isolate fine tumor boundaries for downstream layers.'}
                   </div>
                 </div>

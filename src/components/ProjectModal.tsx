@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, CheckCircle, Layers, Cpu, Award, ArrowUpRight } from 'lucide-react';
 import { Project } from '../data/portfolioData';
+import { ProjectSystemVisual } from './ProjectSystemVisual';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -51,17 +52,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
           </p>
         </div>
 
-        {/* Image preview if exists */}
-        {project.image && (
-          <div className="mb-6 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 aspect-[16/9]">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-        )}
+        {/* System Architecture Visual Panel (No static screenshots) */}
+        <div className="mb-6">
+          <ProjectSystemVisual projectId={project.id} />
+        </div>
 
         {/* Deep Dive Description */}
         <div className="space-y-6 text-sm text-slate-300">

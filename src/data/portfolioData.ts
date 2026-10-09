@@ -111,7 +111,6 @@ export const PORTFOLIO_DATA = {
         'Audio Stream -> Multilingual STT -> Token Normalization -> LLM Reasoning & Schema Map -> Pandas/NumPy Pipeline -> Dynamic React Visualization',
       impact:
         'Reduced ad-hoc dataset synthesis turnaround by 70% in benchmark tests; enabled zero-code queries for non-technical domain stakeholders.',
-      image: '/src/assets/images/sheetflow_ai_workspace_1791535889194.jpg',
       hasDemo: true,
       demoType: 'sheetflow',
     },
@@ -135,7 +134,6 @@ export const PORTFOLIO_DATA = {
         'Raw MRI Scan -> Contrast Adaptive Enhancement -> Deep CNN Feature Backbone -> Classifier -> Gradient-Weighted Class Activation Mapping (Grad-CAM) -> Clinical Overlay Heatmap',
       impact:
         'Successfully published and presented at ICODSES 2026; recognized for bridging the gap between algorithmic accuracy and clinician interpretability.',
-      image: '/src/assets/images/medical_ai_research_xai_1791535903180.jpg',
       hasDemo: true,
       demoType: 'xai',
       paperTitle: 'Explainable Deep Learning Model for Medical Image Enhancement and Tumor Detection',

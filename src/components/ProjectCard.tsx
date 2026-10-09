@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight, Cpu } from 'lucide-react';
 import { Project } from '../data/portfolioData';
+import { ProjectSystemVisual } from './ProjectSystemVisual';
 
 interface ProjectCardProps {
   project: Project;
@@ -40,21 +41,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect, fea
           {project.subtitle}
         </p>
 
-        {/* Visual Asset if featured or present */}
-        {project.image && (
-          <div className="mb-5 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 aspect-[16/9] relative">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-2.5 left-3 right-3 text-[11px] text-slate-300 truncate">
-              {project.impact}
-            </div>
-          </div>
-        )}
+        {/* Architectural System Visual (Replaces static image screenshots) */}
+        <div className="mb-5">
+          <ProjectSystemVisual projectId={project.id} />
+        </div>
 
         {/* Description */}
         <p className="text-sm text-slate-300 leading-relaxed mb-6">

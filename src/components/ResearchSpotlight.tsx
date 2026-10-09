@@ -20,20 +20,82 @@ export const ResearchSpotlight: React.FC = () => {
 
         {/* Feature Grid Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Scientific Visual */}
+          {/* Scientific Visual (Architectural Vector & Neural Flow Console) */}
           <div className="lg:col-span-6">
-            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-2 overflow-hidden shadow-2xl">
-              <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-slate-900">
-                <img
-                  src="/src/assets/images/medical_ai_research_xai_1791535903180.jpg"
-                  alt="ICODSES 2026 Paper Presentation - Explainable Deep Learning Model"
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+            <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 overflow-hidden shadow-2xl font-mono text-xs">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div className="flex items-center gap-2">
+                  <Cpu className="w-4 h-4 text-blue-400" />
+                  <span className="text-white font-semibold">ICODSES &apos;26 Neural Flow Pipeline</span>
+                </div>
+                <span className="text-[10px] text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-900/60">
+                  Paper Presentation
+                </span>
               </div>
-              <div className="p-3 text-xs text-slate-400 flex items-center justify-between border-t border-slate-900 mt-2">
-                <span className="font-mono text-slate-300">Architecture: CNN Backbone + Grad-CAM Heatmap</span>
-                <span className="text-emerald-400 font-mono">Confidence: 94.7%</span>
+
+              {/* Dynamic Neural Pipeline Flow */}
+              <div className="space-y-3 mb-4">
+                {/* Step 1 */}
+                <div className="p-3 bg-slate-900/80 border border-slate-800 rounded-lg flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="w-6 h-6 rounded bg-slate-800 text-slate-300 flex items-center justify-center text-[10px] font-bold">
+                      01
+                    </span>
+                    <div>
+                      <span className="text-white font-medium block">Raw Neuroimaging Tensor</span>
+                      <span className="text-[11px] text-slate-400">Low-contrast T1/T2 axial scan acquisition</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-mono">256×256</span>
+                </div>
+
+                {/* Step 2 */}
+                <div className="p-3 bg-blue-950/30 border border-blue-900/60 rounded-lg flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="w-6 h-6 rounded bg-blue-900/60 text-blue-300 flex items-center justify-center text-[10px] font-bold">
+                      02
+                    </span>
+                    <div>
+                      <span className="text-white font-medium block">Adaptive Contrast Enhancement</span>
+                      <span className="text-[11px] text-slate-400">Micro-structure edge filtering & noise attenuation</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-blue-400 font-mono">+18.4dB SNR</span>
+                </div>
+
+                {/* Step 3 */}
+                <div className="p-3 bg-indigo-950/30 border border-indigo-900/60 rounded-lg flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="w-6 h-6 rounded bg-indigo-900/60 text-indigo-300 flex items-center justify-center text-[10px] font-bold">
+                      03
+                    </span>
+                    <div>
+                      <span className="text-white font-medium block">Deep Convolutional Feature Backbone</span>
+                      <span className="text-[11px] text-slate-400">Layer 8 convolutional activation space</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-indigo-400 font-mono">512 Channels</span>
+                </div>
+
+                {/* Step 4 */}
+                <div className="p-3 bg-rose-950/30 border border-rose-900/60 rounded-lg flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="w-6 h-6 rounded bg-rose-900/60 text-rose-300 flex items-center justify-center text-[10px] font-bold">
+                      04
+                    </span>
+                    <div>
+                      <span className="text-white font-medium block">Grad-CAM Interpretability Saliency</span>
+                      <span className="text-[11px] text-slate-400">Gradient-weighted class localization heatmap</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-rose-400 font-mono">96.3% IoU Match</span>
+                </div>
+              </div>
+
+              {/* Verified Metrics Strip */}
+              <div className="p-3.5 bg-slate-900/60 border border-slate-800 rounded-lg flex items-center justify-between text-[11px]">
+                <span className="text-slate-400">Target Lesion Classification:</span>
+                <span className="text-emerald-400 font-bold">94.7% Positive Concordance</span>
               </div>
             </div>
           </div>
